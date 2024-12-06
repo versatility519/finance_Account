@@ -2,7 +2,7 @@ import { ShippingData } from '@/types/shipping';
 
 export const mockData: ShippingData[] = [
   {
-    id: '#3066',
+    id: '62',
     name: 'John Doe',
     notes: 'Express delivery requested',
     dateCreated: '2024-01-06',
@@ -11,7 +11,7 @@ export const mockData: ShippingData[] = [
     carrier: 'DHL Express',
   },
   {
-    id: '#3065',
+    id: '65',
     name: 'Jane Smith',
     notes: 'Fragile items included',
     dateCreated: '2024-01-05',
@@ -20,7 +20,25 @@ export const mockData: ShippingData[] = [
     carrier: 'FedEx',
   },
   {
-    id: '#3064',
+    id: '66',
+    name: 'John Doe',
+    notes: 'Express delivery requested',
+    dateCreated: '2024-01-06',
+    status: 'pending',
+    sales: 299.99,
+    carrier: 'DHL Express',
+  },
+  {
+    id: '65',
+    name: 'Jane Smith',
+    notes: 'Fragile items included',
+    dateCreated: '2024-01-05',
+    status: 'shipped',
+    sales: 149.50,
+    carrier: 'FedEx',
+  },
+  {
+    id: '64',
     name: 'Robert Johnson',
     notes: 'Priority shipping',
     dateCreated: '2024-01-05',
@@ -29,7 +47,7 @@ export const mockData: ShippingData[] = [
     carrier: 'UPS',
   },
   {
-    id: '#3063',
+    id: '63',
     name: 'Emily Davis',
     notes: 'International shipping',
     dateCreated: '2024-01-04',
@@ -38,7 +56,7 @@ export const mockData: ShippingData[] = [
     carrier: 'DHL Express',
   },
   {
-    id: '#3062',
+    id: '62',
     name: 'Michael Wilson',
     notes: 'Standard delivery',
     dateCreated: '2024-01-04',
@@ -47,7 +65,7 @@ export const mockData: ShippingData[] = [
     carrier: 'USPS',
   },
   {
-    id: '#3061',
+    id: '61',
     name: 'Sarah Brown',
     notes: 'Next day delivery',
     dateCreated: '2024-01-03',
@@ -56,7 +74,7 @@ export const mockData: ShippingData[] = [
     carrier: 'FedEx',
   },
   {
-    id: '#3060',
+    id: '60',
     name: 'David Miller',
     notes: 'Handle with care',
     dateCreated: '2024-01-03',
@@ -65,7 +83,7 @@ export const mockData: ShippingData[] = [
     carrier: 'UPS',
   },
   {
-    id: '#3059',
+    id: '59',
     name: 'Lisa Anderson',
     notes: 'Signature required',
     dateCreated: '2024-01-02',
@@ -74,7 +92,7 @@ export const mockData: ShippingData[] = [
     carrier: 'DHL Express',
   },
   {
-    id: '#3058',
+    id: '58',
     name: 'James Taylor',
     notes: 'Weekend delivery',
     dateCreated: '2024-01-02',
@@ -83,7 +101,7 @@ export const mockData: ShippingData[] = [
     carrier: 'USPS',
   },
   {
-    id: '#3057',
+    id: '57',
     name: 'Patricia Martinez',
     notes: 'Express shipping',
     dateCreated: '2024-01-01',

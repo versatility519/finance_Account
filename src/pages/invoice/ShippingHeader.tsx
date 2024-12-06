@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search, Plus, Filter } from 'lucide-react';
+import { Plus, Filter } from 'lucide-react';
 import { ShippingFilters, SortOption } from '@/types/shipping';
 
 interface ShippingHeaderProps {
@@ -33,19 +33,19 @@ export function ShippingHeader({
     onFiltersChange(newFilters);
   };
 
-  const handleCarrierChange = (carrier: string) => {
-    const newFilters = { ...filters, carrier };
-    setFilters(newFilters);
-    onFiltersChange(newFilters);
-  };
+  // const handleCarrierChange = (carrier: string) => {
+  //   const newFilters = { ...filters, carrier };
+  //   setFilters(newFilters);
+  //   onFiltersChange(newFilters);
+  // };
 
   return (
     <div className="space-y-4 mb-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-semibold text-gray-900">Shipping</h2>
+        <h2 className="text-2xl font-semibold text-gray-900">Invoice</h2>
         <Button className="gap-2">
           <Plus className="h-4 w-4" />
-          New Shipment
+          Create Invoice
         </Button>
       </div>
       
@@ -55,7 +55,7 @@ export function ShippingHeader({
             type="search"
             placeholder="Search shipments..."
             className="h-9"
-            prefix={<Search className="h-4 w-4 text-gray-500" />}
+            // prefix={<Search className="h-4 w-4 text-gray-500" />}/
             onChange={(e) => onSearchChange(e.target.value)}
           />
         </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function useSelection<T>(items: T[], getKey: (item: T) => string) {
+export function useSelection<T>(getKey: (item: T) => string) {
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
 
   const isSelected = (item: T) => selectedKeys.has(getKey(item));

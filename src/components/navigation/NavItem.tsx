@@ -15,7 +15,7 @@ export function NavItem({ icon: Icon, label }: NavItemProps) {
     if (label == 'Dashboard')
       navigate(`/`)
     else
-      navigate(`/${label.toLowerCase()}`)
+      navigate(`/${label.toLowerCase().replace(" ", '-')}`)
   }
   return (
     <button

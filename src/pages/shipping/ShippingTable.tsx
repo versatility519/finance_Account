@@ -95,7 +95,7 @@ export function ShippingTable({ filters, sortOption, searchQuery }: ShippingTabl
                 <TableCell>
                   <Checkbox 
                     checked={selectedItems.includes(item.id)}
-                    onCheckedChange={(checked) => handleSelectItem(item.id, checked)}
+                    onCheckedChange={(checked) => handleSelectItem(item.id, checked as boolean)}
                   />
                 </TableCell>
                 <TableCell className="font-medium">{item.id}</TableCell>

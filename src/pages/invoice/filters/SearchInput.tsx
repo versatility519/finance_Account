@@ -1,5 +1,5 @@
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+// import { Search } from 'lucide-react';
 
 interface SearchInputProps {
   value: string;
@@ -13,7 +13,7 @@ export function SearchInput({ value, onChange }: SearchInputProps) {
       value={value}
       placeholder="Search shipments..."
       className="h-9"
-      prefix={<Search className="h-4 w-4 text-gray-500" />}
+      // prefix={<Search className="h-4 w-4 text-gray-500" />}
       onChange={(e) => onChange(e.target.value)}
     />
   );
