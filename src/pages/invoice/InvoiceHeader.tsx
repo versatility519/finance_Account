@@ -9,36 +9,29 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Plus, Filter } from 'lucide-react';
-import { ShippingFilters, SortOption } from '@/types/shipping';
+import { InvoiceFilters, SortOption } from '@/types/invoice';
 
-interface ShippingHeaderProps {
-  onFiltersChange: (filters: ShippingFilters) => void;
+interface InvoiceProps {
+  onFiltersChange: (filters: InvoiceFilters) => void;
   onSortChange: (sort: SortOption) => void;
   onSearchChange: (search: string) => void;
 }
 
-export function ShippingHeader({ 
+export function InvoiceHeader({ 
   onFiltersChange, 
   onSortChange, 
   onSearchChange 
-}: ShippingHeaderProps) {
-  const [filters, setFilters] = useState<ShippingFilters>({
-    status: 'all',
-    carrier: 'all'
+}: InvoiceProps) {
+  const [filters, setFilters] = useState<InvoiceFilters>({
+    status: 'all'
   });
 
   const handleStatusChange = (status: string) => {
-    const newFilters = { ...filters, status: status as ShippingFilters['status'] };
+    const newFilters = { ...filters, status: status as InvoiceFilters['status'] };
     setFilters(newFilters);
     onFiltersChange(newFilters);
   };
-
-  // const handleCarrierChange = (carrier: string) => {
-  //   const newFilters = { ...filters, carrier };
-  //   setFilters(newFilters);
-  //   onFiltersChange(newFilters);
-  // };
-
+ 
   return (
     <div className="space-y-4 mb-6">
       <div className="flex items-center justify-between">
@@ -53,7 +46,7 @@ export function ShippingHeader({
         <div className="flex-1">
           <Input
             type="search"
-            placeholder="Search shipments..."
+            placeholder="Search invoices..."
             className="h-9"
             // prefix={<Search className="h-4 w-4 text-gray-500" />}/
             onChange={(e) => onSearchChange(e.target.value)}

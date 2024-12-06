@@ -1,16 +1,14 @@
-export type InvoiceStatus = 'Need Approval' | 'Approve' | 'Waiting Payment' | 'Paid' | 'Complete';
+export type InvoiceStatus = 'need_approval' | 'approve' | 'waiting_payment' | 'paid' | 'complete';
 
 export type SortOption = 'newest' | 'oldest' | 'amount-high' | 'amount-low';
 
 export interface InvoiceFilters {
   status: InvoiceStatus | 'all';
-  carrier: string | 'all';
 }
 
 export interface InvoiceData {
   id: string;
   dateCreated: string;
-  name: string;
   client: string;
   requiredData: string;
   shipTo: string;

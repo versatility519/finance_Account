@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { ShippingHeader } from "./ShippingHeader";
-import { ShippingTable } from "./ShippingTable";
-import { ShippingFilters, SortOption } from "@/types/shipping";
+import { InvoiceHeader } from "./InvoiceHeader";
+import { InvoiceTable } from "./InvoiceTable";
+import { InvoiceFilters, SortOption } from "@/types/invoice";
 
-function App() {
-  const [filters, setFilters] = useState<ShippingFilters>({
-    status: "all",
-    carrier: "all",
+function Invoice() {
+  const [filters, setFilters] = useState<InvoiceFilters>({
+    status: "all"
   });
   const [sortOption, setSortOption] = useState<SortOption>("newest");
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,12 +13,12 @@ function App() {
   return (
     <div>
         <main className="flex-1 p-6">
-          <ShippingHeader
+          <InvoiceHeader
             onFiltersChange={setFilters}
             onSortChange={setSortOption}
             onSearchChange={setSearchQuery}
           />
-          <ShippingTable
+          <InvoiceTable
             filters={filters}
             sortOption={sortOption}
             searchQuery={searchQuery}
@@ -29,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+export default Invoice;

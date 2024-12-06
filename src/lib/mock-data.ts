@@ -1,6 +1,7 @@
+import { InvoiceData } from '@/types/invoice';
 import { ShippingData } from '@/types/shipping';
 
-export const mockData: ShippingData[] = [
+export const shippingData: ShippingData[] = [
   {
     id: '62',
     name: 'John Doe',
@@ -110,3 +111,38 @@ export const mockData: ShippingData[] = [
     carrier: 'FedEx',
   }
 ];
+
+export const invoiceData:InvoiceData[] = [
+  {
+    id: '12',
+    dateCreated: '2024-01-06',
+    client: 'John',
+    requiredData: '2024-01-06',
+    shipTo: 'shipTo',
+    billTo: 'billTo',
+    totalTaxAmount: 200,
+    totalNetAmount: 12,
+    totalAmount: 12,
+    status: 'paid',
+    contact: 'string',
+    turnTOpdf: true,
+    clientApproval: true,
+    salesNum: 12,
+  },
+  {
+    id: '123',
+    dateCreated: '2024-01-06',
+    client: 'william',
+    requiredData: '2024-01-06',
+    shipTo: 'shipTo',
+    billTo: 'billTo',
+    totalTaxAmount: 423,
+    totalNetAmount: 12,
+    totalAmount: 12,
+    status: 'approve',
+    contact: 'string',
+    turnTOpdf: true,
+    clientApproval: true,
+    salesNum: 79,
+  },
+]

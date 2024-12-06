@@ -10,22 +10,22 @@ import {
 } from '@/components/ui/table';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
-import { useShippingData } from '@/hooks/useShippingData';
-import { ShippingStatus, ShippingFilters, SortOption } from '@/types/shipping';
+import { useInvoiceData } from '@/hooks/useInvoiceData';
+import { InvoiceStatus, InvoiceFilters, SortOption } from '@/types/invoice';
 import { formatDate } from '@/lib/date';
 import { Pagination } from './Pagination';
 
-interface ShippingTableProps {
-  filters: ShippingFilters;
+interface InvoiceTableProps {
+  filters: InvoiceFilters;
   sortOption: SortOption;
   searchQuery: string;
 }
 
-export function ShippingTable({ filters, sortOption, searchQuery }: ShippingTableProps) {
+export function InvoiceTable({ filters, sortOption, searchQuery }: InvoiceTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   
-  const { data, totalPages, totalItems, itemsPerPage } = useShippingData(
+  const { data, totalPages, totalItems, itemsPerPage } = useInvoiceData(
     currentPage,
     filters,
     sortOption,
@@ -48,12 +48,13 @@ export function ShippingTable({ filters, sortOption, searchQuery }: ShippingTabl
     }
   };
 
-  const getStatusBadge = (status: ShippingStatus) => {
+  const getStatusBadge = (status: InvoiceStatus) => {
     const styles = {
-      pending: 'bg-yellow-100 text-yellow-800',
-      shipped: 'bg-green-100 text-green-800',
-      delivered: 'bg-blue-100 text-blue-800',
-      cancelled: 'bg-red-100 text-red-800',
+      need_approval: 'bg-yellow-100 text-yellow-800',
+      approve: 'bg-green-100 text-green-800',
+      waiting_payment: 'bg-blue-100 text-blue-800',
+      paid: 'bg-red-100 text-red-800',
+      complete: 'bg-green-100 text-yellow-800',
     };
 
     return (
@@ -75,14 +76,21 @@ export function ShippingTable({ filters, sortOption, searchQuery }: ShippingTabl
                   onCheckedChange={handleSelectAll}
                 />
               </TableHead>
-              <TableHead>No.</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Notes</TableHead>
+              <TableHead>Invoice No.</TableHead>
               <TableHead>Date Created</TableHead>
+              <TableHead>Client</TableHead>
+              <TableHead>Required Data</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Sales</TableHead>
-              <TableHead>Carrier</TableHead>
-              <TableHead className="w-12"></TableHead>
+              <TableHead>Ship To</TableHead>
+              <TableHead>Bill To</TableHead>
+              <TableHead>Total Tax Amount</TableHead>
+              <TableHead>Total Net Amount</TableHead>
+              <TableHead>Total Amount</TableHead>
+              <TableHead>Contact</TableHead>
+              <TableHead>Turn of PDF</TableHead>
+              <TableHead>Approval</TableHead>
+              <TableHead>Sales Num</TableHead>
+              <TableHead className="w-12">Action</TableHead>
             </TableRow>
           </TableHeader>
           
@@ -99,12 +107,19 @@ export function ShippingTable({ filters, sortOption, searchQuery }: ShippingTabl
                   />
                 </TableCell>
                 <TableCell className="font-medium">{item.id}</TableCell>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.notes}</TableCell>
                 <TableCell>{formatDate(item.dateCreated)}</TableCell>
+                <TableCell>{item.client}</TableCell>
+                <TableCell>{formatDate(item.requiredData)}</TableCell>
                 <TableCell>{getStatusBadge(item.status)}</TableCell>
-                <TableCell>${item.sales.toFixed(2)}</TableCell>
-                <TableCell>{item.carrier}</TableCell>
+                <TableCell>{item.shipTo}</TableCell>
+                <TableCell>{item.billTo}</TableCell>
+                <TableCell>${item.totalTaxAmount.toFixed(2)}</TableCell>
+                <TableCell>${item.totalNetAmount.toFixed(2)}</TableCell>
+                <TableCell>${item.totalAmount.toFixed(2)}</TableCell>
+                <TableCell>{item.contact}</TableCell>
+                <TableCell>{item.turnTOpdf}</TableCell>
+                <TableCell>{item.clientApproval}</TableCell>
+                <TableCell>{item.salesNum}</TableCell>
                 <TableCell>
                   <button className="p-2 hover:bg-gray-100 rounded-full">
                     <MoreVertical className="h-4 w-4" />
