@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/table';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useInvoiceData } from '@/hooks/useInvoiceData';
 import { InvoiceStatus, InvoiceFilters, SortOption } from '@/types/invoice';
 import { formatDate } from '@/lib/date';
@@ -24,7 +25,7 @@ interface InvoiceTableProps {
 export function InvoiceTable({ filters, sortOption, searchQuery }: InvoiceTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
-  
+
   const { data, totalPages, totalItems, itemsPerPage } = useInvoiceData(
     currentPage,
     filters,
@@ -71,7 +72,7 @@ export function InvoiceTable({ filters, sortOption, searchQuery }: InvoiceTableP
           <TableHeader>
             <TableRow>
               <TableHead className="w-12">
-                <Checkbox 
+                <Checkbox
                   checked={selectedItems.length === data.length}
                   onCheckedChange={handleSelectAll}
                 />
@@ -93,15 +94,15 @@ export function InvoiceTable({ filters, sortOption, searchQuery }: InvoiceTableP
               <TableHead className="w-12">Action</TableHead>
             </TableRow>
           </TableHeader>
-          
+
           <TableBody>
             {data.map((item) => (
-              <TableRow 
+              <TableRow
                 key={item.id}
                 className={selectedItems.includes(item.id) ? 'bg-gray-50' : ''}
               >
                 <TableCell>
-                  <Checkbox 
+                  <Checkbox
                     checked={selectedItems.includes(item.id)}
                     onCheckedChange={(checked) => handleSelectItem(item.id, checked as boolean)}
                   />
@@ -121,16 +122,27 @@ export function InvoiceTable({ filters, sortOption, searchQuery }: InvoiceTableP
                 <TableCell>{item.clientApproval}</TableCell>
                 <TableCell>{item.salesNum}</TableCell>
                 <TableCell>
-                  <button className="p-2 hover:bg-gray-100 rounded-full">
-                    <MoreVertical className="h-4 w-4" />
-                  </button>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <button className="p-2 hover:bg-gray-100 rounded-full">
+                        <MoreVertical className="h-4 w-4" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent align="end" className='w-24' sideOffset={2}>
+                      <ul className="space-y-2">
+                        <li>View</li>
+                        <li>Edit</li>
+                        <li>Delete</li>
+                      </ul>
+                    </PopoverContent>
+                  </Popover>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </div>
-      
+
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
