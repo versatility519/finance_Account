@@ -16,10 +16,10 @@ import { NavItem } from './NavItem';
 
 export function Navigation() {
   return (
-    <nav className="flex w-full space-y-1 px-2 py-4">
-      <NavItem icon={BarChart3} label="Dashboard" />
+    <nav className="flex w-full gap-2 p-2">
+      <NavItem icon={BarChart3} label="Dashboard"/>
       <NavItem icon={FileText} label="Invoice" />
-      <NavItem icon={Package} label="Shipping" isActive />
+      <NavItem icon={Package} label="Shipping" />
       <NavItem icon={ShoppingCart} label="Sales" />
       <NavItem icon={Users} label="Clients" />
       <NavItem icon={Receipt} label="Bills" />
